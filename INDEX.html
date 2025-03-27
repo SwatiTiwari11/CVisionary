@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Builder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.5/axios.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Resume Builder</h1>
+        <div class="resume-form">
+            <label>Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label>Job Title:</label>
+            <input type="text" id="jobTitle" placeholder="Enter job title">
+            <button onclick="fetchAIContent()">Auto-Fill with AI</button>
+
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label>Phone:</label>
+            <input type="text" id="phone" placeholder="Enter your phone number">
+
+            <label>Education:</label>
+            <textarea id="education" placeholder="Enter your education details"></textarea>
+
+            <label>Projects:</label>
+            <textarea id="projects" placeholder="Enter your project details"></textarea>
+
+            <label>Skills:</label>
+            <textarea id="skills" placeholder="Enter skills (comma separated)"></textarea>
+
+            <label>Experience:</label>
+            <textarea id="experience" placeholder="Describe your experience"></textarea>
+
+            <label>Choose Template:</label>
+            <select id="templateSelect" onchange="changeTemplate()">
+                <option value="default">Default</option>
+                <option value="modern">Modern</option>
+                <option value="minimal">Minimal</option>
+            </select>
+
+            <button onclick="generateResume()">Generate Resume</button>
+            <button onclick="downloadPDF()">Download as PDF</button>
+        </div>
+
+        <div class="resume-preview" id="resumePreview">
+            <h2 id="previewName">Your Name</h2>
+            <h3 id="previewJobTitle">Job Title</h3>
+            <p><strong>Email:</strong> <span id="previewEmail">Your Email</span></p>
+            <p><strong>Phone:</strong> <span id="previewPhone">Your Phone</span></p>
+            <h4>Education:</h4>
+            <p id="previewEducation">Your education details here</p>
+            <h4>Projects:</h4>
+            <p id="previewProjects">Your projects here</p>
+            <h4>Skills:</h4>
+            <p id="previewSkills">Your skills here</p>
+            <h4>Experience:</h4>
+            <p id="previewExperience">Your experience here</p>
+        </div>
+    </div>
+    
+    <script>
+        function changeTemplate() {
+            const selectedTemplate = document.getElementById("templateSelect").value;
+            const resumePreview = document.getElementById("resumePreview");
+            resumePreview.className = selectedTemplate;
+        }
+    </script>
+</body>
+</html>
